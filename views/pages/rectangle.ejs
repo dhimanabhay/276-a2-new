@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+  <main class="main-container">
+    <h1 class="page-heading"><%= row.name %></h1>
+    <div id="rectangle-canvas">
+      <div id="rectangle">
+        <script>
+          const rowColor = <%- JSON.stringify(row.color) %>;
+          const rowWidth = <%- JSON.stringify(row.width) %>;
+          const rowHeight = <%- JSON.stringify(row.height) %>;
+          const rectangleElement = document.querySelector('#rectangle');
+          rectangleElement.style.backgroundColor = rowColor;
+          rectangleElement.style.width = `${rowWidth}px`;
+          rectangleElement.style.height = `${rowHeight}px`;
+        </script>
+      </div>
+    </div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Width</th>
+        <th>Height</th>
+      </tr>
+      <tr>
+        <td><%= row.name %></td>
+        <td><%= row.color %></td>
+        <td><%= row.width %></td>
+        <td><%= row.height %></td>
+      </tr>
+    </table>
+    <h1 class="page-heading">Update Rectangle</h1>
+    <form id="update-rectangle-form" action="/rectangles/<%= row.id %>/update" method="post">
+      <div class="form-input-container">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" autocomplete="off" value="<%= row.name %>" required maxlength="255" />
+      </div>
+      <div class="form-input-container">
+        <label for="color">Color</label>
+        <input id="color" type="text" name="color" autocomplete="off" value="<%= row.color %>" required maxlength="255" />
+      </div>
+      <div class="form-input-container">
+        <label for="width">Width</label>
+        <input id="width" type="number" min="1" name="width" autocomplete="off" value="<%= row.width %>" required />
+      </div>
+      <div class="form-input-container">
+        <label for="height">Height</label>
+        <input id="height" type="number" min="1" name="height" autocomplete="off" value="<%= row.height %>" required />
+      </div>
+      <input id="form-update-button" type="submit" value="Update" form="update-rectangle-form" />
+    </form>
+    <h1 class="page-heading">Delete Rectangle</h1>
+    <form id="delete-rectangle-form" action="/rectangles/<%= row.id %>/delete" method="get">
+      <input id="form-delete-button" type="submit" form="delete-rectangle-form" value="Delete" />
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+  <main class="main-container">
+    <h1 class="page-heading">Rectangles</h1>
+    <div id="rectangles-container">
+      <% rows.forEach(function(row) { %>
+        <div class="rectangle-container">
+          <h2 class="rectangle-name">
+            <a class="rectangle-link" href="/rectangles/<%= row.id %>"><%= row.name %></a>
+          </h2>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</body>
+</html>

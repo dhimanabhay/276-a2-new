@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+  <main class="main-container">
+    <h1 class="page-heading">Add Rectangle</h1>
+    <form id="add-rectangle-form" action="/add-rectangle" method="post">
+      <div class="form-input-container">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" autocomplete="off" required maxlength="255" />
+      </div>
+      <div class="form-input-container">
+        <label for="color">backgroundColor</label>
+        <input id="color" type="text" name="color" autocomplete="off" required maxlength="255" />
+      </div>
+      <div class="form-input-container">
+        <label for="width">Width</label>
+        <input id="width" type="number" min="1" name="width" autocomplete="off" required />
+      </div>
+      <div class="form-input-container">
+        <label for="height">Height</label>
+        <input id="height" type="number" min="1" name="height" autocomplete="off" required />
+      </div>
+      <input id="form-add-button" type="submit" value="Add" form="add-rectangle-form" />
+    </form>
+  </main>
+</body>
+</html>
