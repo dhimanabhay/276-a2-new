@@ -6,15 +6,15 @@ const { Pool } = require('pg');
 const PORT = process.env.PORT || 5000;
 
 // Database
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
-pool = new Pool({
-  connectionString:'postgres://postgres:1234@localhost/rectangles'
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
+// pool = new Pool({
+//   connectionString:'postgres://postgres:1234@localhost/rectangles'
+// });
 
 // Express
 const app = express();
